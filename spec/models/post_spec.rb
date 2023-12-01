@@ -13,8 +13,8 @@ RSpec.describe Post, type: :model do
     expect(post).to be_valid
   end
 
-  it 'is not valid with more than 255 characters' do
-    post = FactoryBot.build(:post, title: 'a' * 256, author_id: user.id)
+  it 'is not valid with more than 250 characters' do
+    post = FactoryBot.build(:post, title: 'a' * 251, author_id: user.id)
     expect(post).not_to be_valid
   end
 
