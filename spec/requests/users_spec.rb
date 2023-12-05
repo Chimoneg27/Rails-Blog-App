@@ -17,6 +17,10 @@ RSpec.describe 'Users', type: :request do
     it 'should render the index template' do
       expect(response).to render_template('index')
     end
+
+    it 'includes the correct text' do
+      expect(response.body).to include('Here is my blog main page')
+    end
   end
 
   describe 'GET /show' do
