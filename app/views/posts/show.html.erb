@@ -1,1 +1,19 @@
-<h1>The Trek To The North</h1>
+<div class="post-page">
+  <div class="post">
+    <h3><%= @post.title %> by <%= @user.name %></h3>
+    <p><%= @post.text %></p>
+    <div class="likes_comments">
+      <span>Likes: <%= @post.likes_counter %></span><br/>
+      <span>Comments: <%= @post.comments_counter %></span>
+    </div>
+
+    <div class="user-comments">
+      <h2>Comments</h2>
+      <% @post.comments.each do |comment| %>
+        <div class="comment">
+          <p>Username: <%= comment.Text %></p>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>
