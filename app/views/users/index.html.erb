@@ -1,1 +1,16 @@
-<h1>Here is my blog main page</h1>
+<h1 class='blog-header'>The Normal Blog</h1>
+
+<div class='user-container'>
+    <% @users.each do |user| %>
+      <div class="user-intro"> 
+        <div class="user-img">
+          <img src="<%= user.photo %>" alt="user photo">
+        </div>
+
+        <div class="user-info">
+          <h2><%= link_to user.name, user %></h2>
+          <h3>Number of Posts: <%= user.posts_counter %></h3>
+        </div>
+      </div>
+    <% end %>
+</div>

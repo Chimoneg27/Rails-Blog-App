@@ -1,1 +1,36 @@
-<h1>This is the first user. Aemond Targaryen</h1>
+<div class='user-container'>
+      <div class="user-intro"> 
+        <div class="user-img">
+          <img src="<%= @user.photo %>" alt="user photo">
+        </div>
+
+        <div class="user-info">
+          <h2><%= @user.name %></h2>
+          <h3>Number of Posts: <%= @user.posts_counter %></h3>
+        </div>
+      </div>
+</div>
+
+<div class="user-bio">
+  <h2>Bio</h2>
+  <p><%= @user.bio %></p>
+</div>
+
+<div class="user-posts">
+  <h2>Most Recent Posts</h2>
+  <% @user.most_recent_posts(3).each do |post| %>
+    <div class="post">
+      <h3><%= post.title %></h3>
+      <p><%= post.text %></p>
+
+      <div class="likes-comments">
+        <span>Comments: <%= post.comments_counter %></span><br/>
+        <span>Likes: <%= post.likes_counter %></span>
+      </div>
+    </div>
+  <% end %>
+</div>
+
+<button>
+  <%= link_to 'More Posts',  user_posts_path(@user) %>
+</button>

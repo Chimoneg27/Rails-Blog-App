@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+.blog-header {
+  /* width: 100%; */
+  padding: 0.5rem;
+  margin-top: 0.25rem;
+  margin-bottom: 0.25rem;
+}
+
+.user-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  padding: 0.75rem;
+  width: 90%;
+}
+
+.user-intro {
+  display: flex;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.user-img {
+  width: 25%;
+}
+
+.user-info {
+  width: 75%;
+}
