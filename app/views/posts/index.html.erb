@@ -11,13 +11,18 @@
   </div>
 </div>
 
+<h1>New Posts</h1>
+
+<div class="new-post">
+  <%= link_to 'Add a new post', new_user_post_path(user_id: @user.id) %>
+</div>
+
 <div class="user-posts">
   <h2>Posts</h2>
   <% @user.posts.each do |post| %>
     <div class="post">
       <h3><%= link_to post.title, user_post_path(@user, post) %></h3>
       <p><%= post.text %></p>
-   <%# <%= link_to 'More Posts',  user_posts_path(@user) %>
       <div class="likes_comments">
         <span>Likes: <%= post.likes_counter %></span><br/>
         <span>Comments: <%= post.comments_counter %></span>

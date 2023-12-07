@@ -15,5 +15,13 @@
         </div>
       <% end %>
     </div>
+
+    <div class="new-comment-like">
+      <%= form_with model: @like, url:user_post_likes_path(post_id: @post.id) do |like| %>
+        <%= like.submit  "Like", class:"new-post-btn submit-btn"%>
+      <% end %>
+  
+      <%= link_to 'Add A New comment', new_user_post_comment_path(user_id: @post.author_id, post_id: @post.id), class: 'submit-btn' %>
+    </div>
   </div>
 </div>
