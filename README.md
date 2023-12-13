@@ -107,6 +107,10 @@ rspec
 - Twitter: [@GarvinChimone](https://twitter.com/GarvinChimone)
 - LinkedIn: [Garvin Chimone](https://www.linkedin.com/in/garvin-chimone-37208924a/)
 
+👤 **Eric Delali Mawudeku**
+
+- GitHub: [@erickma1](https://github.com/erickma1)
+
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

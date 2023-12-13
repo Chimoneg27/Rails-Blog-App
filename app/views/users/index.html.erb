@@ -8,7 +8,7 @@
         </div>
 
         <div class="user-info">
-          <h2><%= link_to user.name, user %></h2>
+          <h2><%= link_to user.name, user_path(user), id: "user_#{user.id}" %></h2>
           <h3>Number of Posts: <%= user.posts_counter %></h3>
         </div>
       </div>

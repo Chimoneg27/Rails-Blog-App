@@ -20,7 +20,7 @@
   <h2>Most Recent Posts</h2>
   <% @user.most_recent_posts(3).each do |post| %>
     <div class="post">
-      <h3><%= post.title %></h3>
+      <h3><%= link_to post.title, user_post_path(@user, post), id: "post_#{post.id}" %></h3>
       <p><%= post.text %></p>
 
       <div class="likes-comments">
