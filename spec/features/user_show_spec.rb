@@ -1,6 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'User show', type: :feature do
+  include Rails.application.routes.url_helpers
   # user show page:
 
   # I can see the user's profile picture.
@@ -43,13 +44,13 @@ RSpec.describe 'User show', type: :feature do
     expect(page).to have_link('More Posts')
   end
 
-  #   it 'redirects me to that post\'s show page when I click a user\'s post' do
-  #     post = @posts.first
-  #     visit user_path(@user)
-  #     expect(page).to have_content(post.title)
-  #     click_link(post.title, match: :first)
-  #     expect(page).to have_current_path(post_path(post))
-  #   end
+  it 'redirects me to that post\'s show page when I click a user\'s post' do
+    post = @posts.sort_by(&:created_at).last # rubocop:disable Style/RedundantSort
+    visit user_path(@user)
+    expect(page).to have_content(post.title)
+    click_link(post.title, match: :first)
+    expect(page).to have_current_path("/users/#{post.author_id}/posts/#{post.id}")
+  end
 
   it 'redirects me to the user\'s post\'s index page when I click to see all posts' do
     click_link('More Posts')
