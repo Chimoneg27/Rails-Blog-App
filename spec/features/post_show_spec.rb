@@ -12,7 +12,13 @@ RSpec.describe 'User show', type: :feature do
   it 'shows who wrote the post' do
     expect(page).to have_content(@user.name)
   end
-  
+  it 'shows how many comments it has' do
+    expect(page).to have_content("Comments: #{@comments_counter}")
+  end
+  it 'shows how many likes it has' do
+    expect(page).to have_content("Likes: #{@likes_counter}")
+  end
+
   it 'displays all comments authors' do
     @comments.each do |comment|
       username = User.find(comment.user_id).name
