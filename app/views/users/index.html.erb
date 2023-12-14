@@ -1,10 +1,11 @@
 <h1 class='blog-header'>The Normal Blog</h1>
 
 <div class='user-container'>
+  <%= link_to 'Sign In', new_user_session_path %>
     <% @users.each do |user| %>
       <div class="user-intro"> 
         <div class="user-img">
-          <img src="<%= user.photo %>" alt="user photo">
+          <img src="<%= user.photo if user.photo %>" alt="user photo">
         </div>
 
         <div class="user-info">
