@@ -4,6 +4,16 @@ class PostsController < ApplicationController
     @posts = @user.posts.includes(:comments)
   end
 
+  def destroy
+    @post = Post.find(params[:id])
+    if @post.destroy
+      flash[:success] = 'Post deleted successfully'
+    else
+      flash[:error] = 'Error: Post could not be deleted'
+    end
+    redirect_to user_posts_path(current_user)
+  end
+
   def show
     @post = Post.find_by_id(params[:id])
     @comment = Comment.all
