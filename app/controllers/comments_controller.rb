@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  load_and_authorize_resource
   def new
     @user = current_user
     @post = Post.find(params[:post_id])
@@ -16,6 +17,18 @@ class CommentsController < ApplicationController
     else
       render :new, alert: 'Comment not created'
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+
+    if @comment.destroy
+      flash[:success] = 'Comment deleted successfully'
+    else
+      flash[:error] = 'Error: Comment could not be deleted'
+    end
+
+    redirect_back_or_default(root_path)
   end
 
   private
