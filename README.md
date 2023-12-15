@@ -67,19 +67,6 @@ git clone https://github.com/Chimoneg27/Rails-Blog-App.git
 ```bash
 cd rail-blog-app
 ```
-### Install
-
-```bash
-bundle install
-rails db:migrate
-```
-
-### Run the seeder
-
-```
-rails db:seed
-```
-
 ### Run the App
 
 ```bash
