@@ -12,6 +12,12 @@ class User < ApplicationRecord
 
   before_validation :set_default_posts_counter, on: :create
 
+  validates :role, inclusion: { in: %w[admin user], message: 'Invalid role' }
+
+  def admin?
+    role == 'admin'
+  end
+
   def most_recent_posts(limit = 3)
     posts.order(created_at: :desc).limit(limit)
   end
