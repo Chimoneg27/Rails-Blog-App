@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users, controllers: { registrations: 'registrations', confirmations: 'users/confirmations' }
   get 'likes/new'
   get 'likes/create'
   
