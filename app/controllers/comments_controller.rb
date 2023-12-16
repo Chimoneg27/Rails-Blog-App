@@ -1,4 +1,5 @@
 class CommentsController < ApplicationController
+  before_action :set_user_and_post, only: %i[new create]
   load_and_authorize_resource
   def new
     @user = current_user
@@ -7,15 +8,14 @@ class CommentsController < ApplicationController
   end
 
   def create
-    @user = current_user
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.build(comment_params)
-    @comment.user_id = @user.id
+    @comment = @post.comments.build(comment_params.merge(author_id: current_user.id))
 
     if @comment.save
-      redirect_to user_post_path(@user, @post)
+      flash[:success] = 'Comment saved successfully'
+      redirect_back_or_default(user_post_path(@user, @post))
     else
-      render :new, alert: 'Comment not created'
+      flash.now[:error] = 'Error: Comment could not be saved'
+      render :new
     end
   end
 
@@ -29,6 +29,11 @@ class CommentsController < ApplicationController
     end
 
     redirect_back(fallback_location: root_path)
+  end
+
+  def set_user_and_post
+    @user = User.includes(posts: :comments).find(params[:user_id])
+    @post = @user.posts.includes(:comments).find(params[:post_id])
   end
 
   private

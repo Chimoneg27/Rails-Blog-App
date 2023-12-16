@@ -28,7 +28,7 @@ class Api::V1::CommentsController < ApplicationController
     return if request.headers['Authorization'].nil?
 
     token = request.headers['Authorization'].split.last
-    @user = User.find_by(token:)
+    @user = User.find_by(token: token) # rubocop:disable Style/HashSyntax
     @post = @user.posts.includes(:comments).find(params[:post_id])
   end
 end
