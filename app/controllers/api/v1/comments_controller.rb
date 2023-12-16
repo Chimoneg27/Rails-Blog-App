@@ -4,17 +4,16 @@ class Api::V1::CommentsController < ApplicationController
   load_and_authorize_resource
 
   def index
-    @comments = Comment.where(post_id: params[:post_id], author_id: params[:user_id])
-    render json: @comments
+    @comments = Comment.where(post_id: params[:post_id], user_id: params[:user_id])
   end
 
   def create
-    @comment = @post.comments.build(comment_params.merge(author_id: @user.id))
+    @comment = @post.comments.build(comment_params.merge(user_id: @user.id))
 
     if @comment.save
       render json: @comment, status: :created
     else
-      render json: { errors: @comment.errors.full_messages }, status: :unprocessable_entity
+      render json: @comment.errors, status: :unprocessable_entity
     end
   end
 
