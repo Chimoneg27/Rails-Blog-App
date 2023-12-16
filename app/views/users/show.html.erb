@@ -12,7 +12,6 @@
         <% if @user == current_user %>
         <div class="api-section">
           <%= button_to "generate token", generate_token_path, class:"button" %>
-          <p>API Token</p>
           <%= "API_Token: #{@user.token}" %>
         </div>
       <%end%>
