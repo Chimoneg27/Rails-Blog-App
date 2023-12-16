@@ -22,6 +22,10 @@ class User < ApplicationRecord
     posts.order(created_at: :desc).limit(limit)
   end
 
+  def generate_token
+    self.token = SecureRandom.base58(30)
+  end
+
   private
 
   def set_default_posts_counter

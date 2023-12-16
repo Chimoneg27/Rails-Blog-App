@@ -8,6 +8,7 @@
   - [Setup](#setup)
   - [Prerequisites](#prerequisites)
   - [Install](#install)
+  - [API Usage](#api-usage)
 - [👥 Authors](#authors)
 - [🔭 Future Features](#future-features)
 - [🤝 Contributing](#contributing)
@@ -83,6 +84,19 @@ Check http://localhost:3000/ in your browser
 rspec
 ```
 
+### API Usage
+
+- To use the API version make sure to set the header `Accept` to `application/json` and the header `Content-Type` to `application/json` for all requests.
+
+refer to this discussion for more details [API](https://github.com/rails/rails/issues/25005)
+
+- To create a comment send a `POST` request to `/users/:user_id/posts/:post_id/comments` with http authorization header set to `YOUR_API_TOKEN` which you can get from your profile page. The body of the request should be a JSON object in the following format:
+
+```json
+{
+  "text": "comment content"
+}
+```
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

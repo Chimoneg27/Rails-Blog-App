@@ -9,6 +9,12 @@
           <h2><%= @user.name %></h2>
           <h3>Number of Posts: <%= @user.posts_counter %></h3>
         </div>
+        <% if @user == current_user %>
+        <div class="api-section">
+          <%= button_to "generate token", generate_token_path, class:"button" %>
+          <%= "API_Token: #{@user.token}" %>
+        </div>
+      <%end%>
       </div>
 </div>
 
